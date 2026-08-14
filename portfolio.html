@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Kavibarathi M — AI &amp; Data Science Engineer</title>
+<meta name="description" content="Portfolio of Kavibarathi M — B.Tech AI & Data Science student, AI/ML builder, Joint Secretary." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#08080d;
+    --bg-elev:#101018;
+    --bg-elev-2:#15151f;
+    --line: rgba(255,255,255,0.09);
+    --line-soft: rgba(255,255,255,0.05);
+    --text:#f2f2f6;
+    --muted:#9498ab;
+    --muted-dim:#65697c;
+    --accent:#6a5cff;
+    --accent-2:#22d3ee;
+    --accent-3:#ff6b6b;
+    --mono: 'JetBrains Mono', monospace;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+    --maxw: 1120px;
+    --radius: 16px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.5;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{ background:var(--accent); color:#fff; }
+
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  section{ position:relative; padding:120px 24px; max-width:var(--maxw); margin:0 auto; }
+  @media (max-width:768px){ section{ padding:80px 20px; } }
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--accent-2);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:24px; height:1px;
+    background:var(--accent-2);
+    display:inline-block;
+  }
+
+  h1,h2,h3{ font-family:var(--display); font-weight:600; letter-spacing:-0.02em; }
+
+  /* ============ BACKGROUND MESH ============ */
+  .mesh-bg{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(600px circle at 15% 20%, rgba(106,92,255,0.22), transparent 60%),
+      radial-gradient(700px circle at 85% 10%, rgba(34,211,238,0.14), transparent 55%),
+      radial-gradient(800px circle at 50% 90%, rgba(106,92,255,0.12), transparent 60%);
+    animation: drift 22s ease-in-out infinite alternate;
+  }
+  @keyframes drift{
+    0%{ transform: translate3d(0,0,0) scale(1); }
+    100%{ transform: translate3d(-2%,3%,0) scale(1.06); }
+  }
+  .grain{
+    position:fixed; inset:0; z-index:1; pointer-events:none; opacity:0.035; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ============ NAV ============ */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    backdrop-filter: blur(14px) saturate(140%);
+    background: rgba(8,8,13,0.55);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav-inner{
+    max-width:var(--maxw); margin:0 auto; padding:16px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo{
+    font-family:var(--mono); font-weight:600; font-size:16px; letter-spacing:0.02em;
+    color:var(--text);
+  }
+  .logo span{ color:var(--accent-2); }
+  nav ul{ list-style:none; display:flex; gap:36px; }
+  nav a{
+    font-family:var(--mono); font-size:13px; color:var(--muted);
+    transition:color .25s ease; position:relative;
+  }
+  nav a:hover{ color:var(--text); }
+  nav a::after{
+    content:''; position:absolute; left:0; bottom:-6px; width:0; height:1px;
+    background:var(--accent-2); transition:width .25s ease;
+  }
+  nav a:hover::after{ width:100%; }
+  .nav-links{ display:flex; align-items:center; gap:36px; }
+  .burger{ display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; z-index:60; }
+  .burger span{ width:22px; height:2px; background:var(--text); display:block; transition:.3s; }
+
+  @media (max-width:860px){
+    .nav-links{
+      position:fixed; inset:0 0 0 30%; background:var(--bg-elev);
+      flex-direction:column; justify-content:center; align-items:flex-start;
+      padding:40px; gap:28px; transform:translateX(100%); transition:transform .4s ease;
+      border-left:1px solid var(--line);
+    }
+    .nav-links.open{ transform:translateX(0); }
+    .nav-links ul{ flex-direction:column; gap:24px; }
+    nav a{ font-size:16px; }
+    .burger{ display:flex; }
+  }
+
+  /* ============ BUTTONS ============ */
+  .btn{
+    font-family:var(--mono); font-size:13px; padding:13px 24px; border-radius:999px;
+    display:inline-flex; align-items:center; gap:8px; border:1px solid var(--line);
+    transition:all .25s ease; cursor:pointer;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--accent), #8b7cff);
+    color:#fff; border:none;
+    box-shadow:0 0 0 0 rgba(106,92,255,0.5);
+  }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 8px 24px rgba(106,92,255,0.35); }
+  .btn-ghost{ color:var(--text); }
+  .btn-ghost:hover{ border-color:var(--accent-2); color:var(--accent-2); }
+
+  /* ============ HERO ============ */
+  .hero{
+    min-height:100svh; display:flex; flex-direction:column; justify-content:center;
+    padding-top:140px; padding-bottom:80px;
+  }
+  .hero-terminal{
+    font-family:var(--mono); font-size:13px; color:var(--accent-2);
+    margin-bottom:28px; display:flex; align-items:center; gap:2px;
+  }
+  .hero-terminal .cursor{
+    display:inline-block; width:8px; height:16px; background:var(--accent-2);
+    margin-left:4px; animation:blink 1s step-end infinite;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  .hero h1{
+    font-size:clamp(42px, 8vw, 92px); line-height:0.98; margin-bottom:22px;
+  }
+  .hero h1 .grad{
+    background:linear-gradient(100deg, var(--accent) 10%, var(--accent-2) 60%, var(--accent-3) 95%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero-sub{
+    font-size:clamp(16px, 2.2vw, 20px); color:var(--muted); max-width:600px; margin-bottom:40px;
+  }
+  .hero-sub strong{ color:var(--text); font-weight:600; }
+  .hero-ctas{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:56px; }
+  
+
+  .hero-stats{
+    display:grid; grid-template-columns:repeat(4,auto); gap:40px; padding-top:32px;
+    border-top:1px solid var(--line);
+  }
+  @media (max-width:768px){ .hero-stats{ grid-template-columns:repeat(2,1fr); gap:28px; } }
+  .stat-num{ font-family:var(--display); font-size:28px; font-weight:600; color:var(--text); }
+  .stat-num span{ color:var(--accent-2); }
+  .stat-label{ font-family:var(--mono); font-size:11.5px; color:var(--muted-dim); text-transform:uppercase; letter-spacing:0.08em; margin-top:4px; }
+
+  /* ============ REVEAL ============ */
+  .reveal{ opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+  .reveal-stagger > *{ opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal-stagger.in-view > *{ opacity:1; transform:translateY(0); }
+  .reveal-stagger.in-view > *:nth-child(1){ transition-delay:.05s; }
+  .reveal-stagger.in-view > *:nth-child(2){ transition-delay:.12s; }
+  .reveal-stagger.in-view > *:nth-child(3){ transition-delay:.19s; }
+  .reveal-stagger.in-view > *:nth-child(4){ transition-delay:.26s; }
+  .reveal-stagger.in-view > *:nth-child(5){ transition-delay:.33s; }
+  .reveal-stagger.in-view > *:nth-child(6){ transition-delay:.40s; }
+
+  .section-head{ display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:56px; flex-wrap:wrap; gap:20px;}
+  .section-head h2{ font-size:clamp(30px,4vw,44px); }
+  .section-head p{ color:var(--muted); max-width:380px; font-size:14.5px; }
+
+  /* ============ ABOUT ============ */
+  .about-grid{ display:grid; grid-template-columns:280px 1fr; gap:64px; align-items:center; }
+  @media (max-width:768px){ .about-grid{ grid-template-columns:1fr; gap:40px; } }
+
+  .avatar-wrap{ position:relative; width:240px; height:240px; margin:0 auto; }
+  .avatar-ring{
+    position:absolute; inset:-10px; border-radius:32px;
+    background:conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent-3), var(--accent));
+    animation:spin 8s linear infinite; opacity:0.7; filter:blur(1px);
+  }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .avatar{
+    position:relative; width:240px; height:240px; border-radius:28px; overflow:hidden;
+    background:var(--bg-elev-2); display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--line);
+  }
+  .avatar img{ width:100%; height:100%; object-fit:cover; }
+  .avatar .initials{ font-family:var(--display); font-size:64px; color:var(--muted-dim); }
+
+  .about-text p{ color:var(--muted); font-size:16px; margin-bottom:16px; max-width:560px; }
+  .about-text strong{ color:var(--text); }
+  .about-facts{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:28px; font-family:var(--mono); font-size:13px; }
+  .about-facts div span{ color:var(--muted-dim); display:block; font-size:11px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:3px; }
+
+  /* ============ SKILLS ============ */
+  .skill-groups{ display:grid; gap:32px; }
+  .skill-group-title{
+    font-family:var(--mono); font-size:12px; color:var(--muted-dim); text-transform:uppercase;
+    letter-spacing:.1em; margin-bottom:14px; display:flex; gap:10px; align-items:center;
+  }
+  .skill-group-title::before{ content:'//'; color:var(--accent); }
+  .chip-row{ display:flex; flex-wrap:wrap; gap:10px; }
+  .chip{
+    font-family:var(--mono); font-size:13px; padding:9px 16px; border-radius:8px;
+    border:1px solid var(--line); color:var(--muted); background:var(--bg-elev);
+    transition:all .25s ease; cursor:default;
+  }
+  .chip:hover{ border-color:var(--accent-2); color:var(--text); background:var(--bg-elev-2); transform:translateY(-2px); }
+
+  /* ============ PROJECTS ============ */
+  .project-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+  @media (max-width:768px){ .project-grid{ grid-template-columns:1fr; } }
+  .project-card{
+    background:var(--bg-elev); border:1px solid var(--line); border-radius:var(--radius);
+    padding:32px; position:relative; overflow:hidden; transition:transform .35s ease, border-color .35s ease;
+  }
+  .project-card::before{
+    content:''; position:absolute; top:0; left:0; right:0; height:2px;
+    background:linear-gradient(90deg, var(--accent), var(--accent-2)); transform:scaleX(0); transform-origin:left;
+    transition:transform .4s ease;
+  }
+  .project-card:hover{ transform:translateY(-6px); border-color:rgba(255,255,255,0.18); }
+  .project-card:hover::before{ transform:scaleX(1); }
+  .project-index{ font-family:var(--mono); font-size:12px; color:var(--accent-2); margin-bottom:16px; }
+  .project-card h3{ font-size:20px; margin-bottom:10px; }
+  .project-card p{ color:var(--muted); font-size:14.5px; margin-bottom:20px; }
+  .project-tags{ display:flex; flex-wrap:wrap; gap:8px; }
+  .tag{ font-family:var(--mono); font-size:11.5px; color:var(--muted-dim); border:1px solid var(--line-soft); padding:5px 10px; border-radius:6px; }
+
+  /* ============ TIMELINE (Experience) ============ */
+  .timeline{ position:relative; padding-left:32px; }
+  .timeline::before{ content:''; position:absolute; left:5px; top:6px; bottom:6px; width:1px; background:var(--line); }
+  .tl-item{ position:relative; padding-bottom:44px; }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-dot{
+    position:absolute; left:-32px; top:4px; width:11px; height:11px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--accent-2); box-shadow:0 0 0 4px rgba(34,211,238,0.12);
+  }
+  .tl-item h3{ font-size:19px; margin-bottom:6px; }
+  .tl-org{ font-family:var(--mono); font-size:12.5px; color:var(--accent-2); margin-bottom:10px; }
+  .tl-item p{ color:var(--muted); font-size:14.5px; max-width:600px; }
+
+  /* ============ ACHIEVEMENTS + LEADERSHIP ============ */
+  .split-grid{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  @media (max-width:860px){ .split-grid{ grid-template-columns:1fr; } }
+  .card{
+    background:var(--bg-elev); border:1px solid var(--line); border-radius:var(--radius); padding:28px;
+  }
+  .achieve-list{ display:grid; gap:16px; }
+  .achieve-item{ display:flex; gap:16px; align-items:flex-start; }
+  .achieve-icon{
+    font-family:var(--mono); font-size:12px; color:var(--accent); flex-shrink:0; margin-top:3px;
+  }
+  .achieve-item p{ color:var(--muted); font-size:14.5px; }
+  .achieve-item strong{ color:var(--text); }
+
+  .lead-card{ display:flex; flex-direction:column; gap:14px; }
+  .lead-role{ font-family:var(--mono); font-size:12.5px; color:var(--accent-2); }
+  .lead-card h3{ font-size:22px; }
+  .lead-card ul{ list-style:none; display:grid; gap:10px; margin-top:6px; }
+  .lead-card li{ color:var(--muted); font-size:14.5px; padding-left:18px; position:relative; }
+  .lead-card li::before{ content:'—'; position:absolute; left:0; color:var(--accent-3); }
+
+  /* ============ EDUCATION ============ */
+  .edu-card{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;
+    background:linear-gradient(135deg, rgba(106,92,255,0.08), rgba(34,211,238,0.05));
+    border:1px solid var(--line); border-radius:var(--radius); padding:36px;
+  }
+  .edu-card h3{ font-size:22px; margin-bottom:8px; }
+  .edu-card p{ color:var(--muted); font-family:var(--mono); font-size:13px; }
+  .edu-cgpa{ text-align:right; }
+  .edu-cgpa .num{ font-family:var(--display); font-size:40px; color:var(--accent-2); }
+  .edu-cgpa .lbl{ font-family:var(--mono); font-size:11px; color:var(--muted-dim); text-transform:uppercase; }
+
+  /* ============ MINI BUTTONS (View Project / View Certificate) ============ */
+  .mini-btn{
+    font-family:var(--mono); font-size:12px; padding:9px 18px; border-radius:999px;
+    border:1px solid var(--line); color:var(--accent-2); display:inline-flex; align-items:center; gap:6px;
+    margin-top:18px; transition:all .25s ease;
+  }
+  .mini-btn:hover{ border-color:var(--accent-2); background:rgba(34,211,238,0.08); color:var(--text); transform:translateY(-2px); }
+  .achieve-item > div{ display:flex; flex-direction:column; align-items:flex-start; }
+
+  /* ============ GALLERY MARQUEE ============ */
+  .gallery-section{ padding-top:100px; }
+  .marquee-row{
+    overflow:hidden; position:relative; margin-bottom:20px;
+    -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .marquee-track{ display:flex; gap:20px; width:max-content; animation: marquee-left 32s linear infinite; }
+  .marquee-track.reverse{ animation-name: marquee-right; }
+  .marquee-row:hover .marquee-track{ animation-play-state:paused; }
+  @keyframes marquee-left{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+  @keyframes marquee-right{ from{ transform:translateX(-50%); } to{ transform:translateX(0); } }
+  .gallery-card{
+    position:relative; width:260px; height:170px; border-radius:14px; overflow:hidden; flex-shrink:0;
+    background:var(--bg-elev); border:1px solid var(--line); transition:transform .35s ease, border-color .35s ease;
+  }
+  .gallery-card:hover{ transform:translateY(-4px); border-color:rgba(255,255,255,0.2); }
+  .gallery-card img{ width:100%; height:100%; object-fit:cover; transition:transform .5s ease; }
+  .gallery-card:hover img{ transform:scale(1.08); }
+  .gallery-card .gallery-caption{
+    position:absolute; left:0; right:0; bottom:0; padding:12px 14px;
+    background:linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+    font-family:var(--mono); font-size:11.5px; color:var(--text);
+  }
+  .gallery-placeholder{
+    width:100%; height:100%; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg, rgba(106,92,255,0.18), rgba(34,211,238,0.12));
+    color:var(--muted-dim); font-family:var(--mono); font-size:12px; text-align:center; padding:12px; line-height:1.6;
+  }
+  .gallery-placeholder {
+    padding: 0 !important;
+    border: none !important;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-placeholder img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+  /* ============ CONTACT / FOOTER ============ */
+  .contact-section{ text-align:center; padding-top:100px; padding-bottom:60px; }
+  .contact-section .eyebrow{ justify-content:center; }
+  .contact-section .eyebrow::before{ display:none; }
+  .contact-section h2{ font-size:clamp(36px,6vw,64px); margin-bottom:20px; }
+  .contact-section p{ color:var(--muted); max-width:480px; margin:0 auto 40px; }
+  .contact-links{ display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin-bottom:64px; }
+
+  footer{
+    border-top:1px solid var(--line-soft); padding:32px 24px; text-align:center;
+    font-family:var(--mono); font-size:12px; color:var(--muted-dim);
+  }
+  footer a:hover{ color:var(--accent-2); }
+
+  .glow-divider{ height:1px; background:linear-gradient(90deg, transparent, var(--line), transparent); margin:0 auto; max-width:var(--maxw); }
+</style>
+</head>
+<body>
+
+<div class="mesh-bg"></div>
+<div class="grain"></div>
+
+<header>
+  <div class="nav-inner">
+    <a href="#top" class="logo">&lt;Kavi<span>Barathi</span>/&gt;</a>
+   
+      </ul>
+    </div>
+    <button class="burger" id="burger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-terminal">&gt; who am i --role= ai-engineer<span class="cursor"></span></div>
+    <h1 class="reveal in-view">Turning ideas into <span class="grad">intelligent</span> solutions.</h1>
+    <p class="hero-sub reveal in-view">
+      I'm <strong>Kavibarathi M</strong>, a pre-final year <strong>B.Tech AI &amp; Data Science</strong> student
+      from Tamil Nadu, India — turning Python, algorithms, and machine learning into practical AI applications.
+    </p>
+   <div class="hero-ctas reveal in-view">
+  <div class="hero-main-ctas">
+    <a href="#projects" class="btn btn-primary">View Projects →</a>
+  </div>
+
+  <a href="src/resume.pdf" class="btn btn-ghost resume-btn" download>
+    Download Resume ↓
+  </a>
+</div>
+    <div class="hero-stats reveal in-view">
+      <div>
+        <div class="stat-num"><span>8.19</span></div>
+        <div class="stat-label">CGPA</div>
+      </div>
+      <div>
+        <div class="stat-num"><span>4+</span></div>
+        <div class="stat-label">AI Projects</div>
+      </div>
+      <div>
+        <div class="stat-num"><span>2</span></div>
+        <div class="stat-label">Internships</div>
+      </div>
+      <div>
+        <div class="stat-num"><span>1st</span></div>
+        <div class="stat-label">Prize, Idea Pitch</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="glow-divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="eyebrow reveal">About</div>
+    <div class="about-grid reveal">
+      <div class="avatar-wrap">
+        <div class="avatar-ring"></div>
+        <div class="avatar" id="avatarSlot">
+          <!-- AVATAR: to add an image, replace the <span class="initials">KM</span> with
+               <img src="assets/img.jpg" alt="Kavibarathi M" />
+               or insert an <img> alongside the initials and hide initials via CSS. -->
+          <img src="src/img.png" alt="Kavibarathi M" />
+          
+        </div>
+      </div>
+      <div class="about-text">
+        <p>
+          I'm a <strong>B.Tech Artificial Intelligence &amp; Data Science</strong> student at
+          Dhanalakshmi Srinivasan College of Engineering and Technology, with a strong foundation in
+          <strong>Python, Data Structures &amp; Algorithms, Machine Learning, and Data Analytics.</strong>
+        </p>
+        <p>
+          I build AI-oriented projects across image recognition, queue management, and legacy application
+          modernization — with hands-on experience in <strong>NumPy, Pandas, Firebase, FastAPI, PostgreSQL,
+          Streamlit,</strong> and the wider Git/GitHub workflow. I'm currently exploring AI Agents,
+          multi-agent systems, and how to ship practical, real-world AI solutions.
+        </p>
+        <div class="about-facts">
+          <div><span>Location</span>Tamil Nadu, India</div>
+          <div><span>Focus</span>AI / ML / Data Science</div>
+          <div><span>Role</span>Joint Secretary, AI &amp; DS Dept.</div>
+          <div><span>Status</span>Open to internships &amp; research</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-head reveal">
+      <h2>Technical Skills</h2>
+      <p>The languages, frameworks, and tools I use to design, train, and ship AI systems.</p>
+    </div>
+    <div class="skill-groups reveal-stagger">
+      <div>
+        <div class="skill-group-title">Programming</div>
+        <div class="chip-row">
+          <span class="chip">Python</span><span class="chip">SQL</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-title">Data Structures &amp; Algorithms</div>
+        <div class="chip-row">
+          <span class="chip">Arrays</span><span class="chip">Stacks &amp; Queues</span>
+          <span class="chip">Linked Lists</span><span class="chip">Binary Trees</span>
+          <span class="chip">BST</span><span class="chip">AVL Trees</span>
+          <span class="chip">Recursion</span><span class="chip">Time &amp; Space Complexity</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-title">AI &amp; Machine Learning</div>
+        <div class="chip-row">
+          <span class="chip">Machine Learning</span><span class="chip">K-Means</span>
+          <span class="chip">Perceptron</span><span class="chip">MLP</span>
+          <span class="chip">Ensemble Methods</span><span class="chip">Bayesian Networks</span>
+          <span class="chip">Monte Carlo Tree Search</span><span class="chip">AI Agents &amp; Multi-Agent Systems</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-title">Data Science &amp; Visualization</div>
+        <div class="chip-row">
+          <span class="chip">NumPy</span><span class="chip">Pandas</span>
+          <span class="chip">Matplotlib</span><span class="chip">Seaborn</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-title">Development &amp; Backend</div>
+        <div class="chip-row">
+          <span class="chip">FastAPI</span><span class="chip">Flask</span>
+          <span class="chip">Streamlit</span><span class="chip">Firebase</span>
+          <span class="chip">Firestore</span><span class="chip">PostgreSQL</span>
+          <span class="chip">REST APIs</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-title">Tools &amp; Platforms</div>
+        <div class="chip-row">
+          <span class="chip">Git</span><span class="chip">GitHub</span>
+          <span class="chip">Docker</span><span class="chip">VS Code</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-head reveal">
+      <h2>Selected Projects</h2>
+      <p>AI systems built to solve real, practical problems — from campus to industry.</p>
+    </div>
+    <div class="project-grid reveal-stagger">
+      <div class="project-card">
+        <div class="project-index">01 / Career Intelligence</div>
+        <h3>AI Skill Gap Detector</h3>
+        <p>An AI system that identifies gaps in a learner's skill set against a target role and suggests personalized career paths to close them.</p>
+        <div class="project-tags">
+          <span class="tag">Python</span><span class="tag">Machine Learning</span><span class="tag">Data Analysis</span>
+        </div>
+        <a href="https://github.com/Kavibarathi-marimuthu/Ai-skill-gap-detector-for-tamizhan-skills.git" target="_blank" rel="noopener" class="mini-btn">View Project →</a>
+      </div>
+      <div class="project-card">
+        <div class="project-index">02 / Operations AI</div>
+        <h3>AI-Based Smart Queue Prediction &amp; Management</h3>
+        <p>An AI model that predicts queue waiting times and optimizes service allocation — built with QR-based tokens and a real-time Firebase backend.</p>
+        <div class="project-tags">
+          <span class="tag">Python</span><span class="tag">Firebase</span><span class="tag">Firestore</span><span class="tag">FastAPI</span>
+        </div>
+        <a href="https://github.com/Kavibarathi-marimuthu/quickq.git" target="_blank" rel="noopener" class="mini-btn">View Project →</a>
+      </div>
+      <div class="project-card">
+        <div class="project-index">03 / Computer Vision</div>
+        <h3>Image-Based Cattle Breed Recognition</h3>
+        <p>Built with Team BOVINETECH for the Smart India Hackathon (Internal). An AI image recognition system that identifies cattle breeds from photographs.</p>
+        <div class="project-tags">
+          <span class="tag">Image Classification</span><span class="tag">Computer Vision</span><span class="tag">Team Project</span>
+        </div>
+        <a href="https://github.com/Kavibarathi-marimuthu/cattle_project.git" target="_blank" rel="noopener" class="mini-btn">View Project →</a>
+      </div>
+      <div class="project-card">
+        <div class="project-index">04 / Enterprise AI</div>
+        <h3>Legacy Application Modernization Using AI</h3>
+        <p>Developed at the IBM SkillsBuild Hackathon — an AI-based approach to modernizing legacy applications, including converting legacy MUMPS code to Python.</p>
+        <div class="project-tags">
+          <span class="tag">IBM SkillsBuild</span><span class="tag">AI Tooling</span><span class="tag">Python</span>
+        </div>
+        <a href="https://github.com/Kavibarathi-marimuthu/legacymodernisation.git" target="_blank" rel="noopener" class="mini-btn">View Project →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-head reveal">
+      <h2>Internships &amp; Training</h2>
+      <p>Applied learning across sustainability-focused AI and industry exposure.</p>
+    </div>
+    <div class="timeline reveal-stagger">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <h3>AI for Sustainability — Virtual Internship</h3>
+        <div class="tl-org">1M1B × AICTE × IBM SkillsBuild</div>
+        <p>Completed a virtual internship applying AI concepts to real-world sustainability challenges aligned with the UN SDGs, with structured learning through IBM SkillsBuild activities.</p>
+        <a href="src/IBM.jpg" target="_blank" rel="noopener" class="mini-btn">View Certificate →</a>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <h3>Technical Internship</h3>
+        <div class="tl-org">National Small Industries Corporation (NSIC)</div>
+        <p>Gained hands-on exposure to a professional working environment, industry-oriented technology, and real project workflows.</p>
+        <a href="src/NSIC.jpg" target="_blank" rel="noopener" class="mini-btn">View Certificate →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS + LEADERSHIP -->
+  <section id="achievements">
+    <div class="section-head reveal">
+      <h2>Achievements &amp; Leadership</h2>
+      <p>Recognition earned and responsibility taken on, beyond the classroom.</p>
+    </div>
+    <div class="split-grid reveal-stagger">
+      <div class="card">
+        <div class="skill-group-title" style="margin-bottom:20px;">Achievements</div>
+        <div class="achieve-list">
+          <div class="achieve-item">
+            <div class="achieve-icon">01</div>
+            <div>
+              <p><strong>First Prize — Idea Pitching</strong><br>AI-Powered Autonomous Multi-Terrain Waste Collection &amp; Segregation Robot.</p>
+              <a href="src/Idea.png" target="_blank" rel="noopener" class="mini-btn">View Image  →</a>
+            </div>
+          </div>
+          <div class="achieve-item">
+            <div class="achieve-icon">02</div>
+            <div>
+              <p><strong>Second Prize — National GAMEATHON</strong><br>Built the FitnessStride app for a national-level competition.</p>
+              <a href="src/2nd.png" target="_blank" rel="noopener" class="mini-btn">View Image →</a>
+            </div>
+          </div>
+          <div class="achieve-item">
+            <div class="achieve-icon">03</div>
+            <div>
+              <p><strong>NPTEL — AI Industrial Management</strong><br>Elite certification, scored 70%.</p>
+              <a href="https://archive.nptel.ac.in/content/noc/NOC25/SEM2/Ecertificates/127/noc25-ge44/Course/NPTEL25GE44S115391362710574128.pdf" target="_blank" rel="noopener" class="mini-btn">View Certificate →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card lead-card">
+        <div class="skill-group-title" style="margin-bottom:6px;">Leadership</div>
+        <div class="lead-role">Joint Secretary</div>
+        <h3>AI &amp; Data Science Department Association</h3>
+        <ul>
+          <li>Supported departmental activities and coordination</li>
+          <li>Organized student-oriented academic and technical events</li>
+          <li>Drove communication and collaboration across students and faculty</li>
+        </ul>
+        <a href="src/JS.JPG" target="_blank" rel="noopener" class="mini-btn">View Image →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-head reveal">
+      <h2>Education</h2>
+      <p></p>
+    </div>
+    <div class="edu-card reveal">
+      <div>
+        <h3>Dhanalakshmi Srinivasan College of Engineering and Technology</h3>
+        <p>B.Tech — Artificial Intelligence &amp; Data Science · Expected Graduation 2028</p>
+      </div>
+      <div class="edu-cgpa">
+        <div class="num">8.19</div>
+        <div class="lbl">CGPA</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="gallery-section">
+    <div class="section-head reveal">
+        <h2>Moments &amp; Achievements</h2>
+        <p>Snapshots from events, hackathons, and milestones along the way.</p>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="marquee-row reveal">
+        <div class="marquee-track">
+
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="idea-pitch">
+                    <img src="src/Idea.png">
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="gameathon">
+                    <img src="src/1.jpg">
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="sih">
+                    <img src="src/2.jpg">
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="ibm">
+                    <img src="src/3.jpg">
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="dept-event">
+                    <img src="src/4.jpg">
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="idea-pitch">
+                    <img src="src/5.jpg">
+                </div>
+            </div>
+
+
+            <!-- Duplicate set -->
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="idea-pitch">
+                    <img src="src/Idea.png">
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="gameathon">
+                    <img src="src/1.jpg">
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="sih">
+                    <img src="src/2.jpg">
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="ibm">
+                    <img src="src/3.jpg">
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="dept-event">
+                    <img src="src/4.jpg">
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="idea-pitch">
+                    <img src="src/5.jpg">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- SECOND ROW -->
+    <div class="marquee-row reveal">
+        <div class="marquee-track reverse">
+
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="gameathon">
+                    <img src="src/6.jpg">
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="sih">
+                    <img src="src/7.jpg">
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="ibm">
+                    <img src="src/9.jpg">
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="dept-event">
+                    <img src="src/11.jpg">
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="dept-event">
+                    <img src="src/12.jpg">
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="dept-event">
+                    <img src="src/13.jpg">
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="dept-event">
+                    <img src="src/1.jpg">
+                </div>
+            </div>
+
+
+            <!-- Duplicate set -->
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="gameathon">
+                    <img src="src/6.jpg">
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="sih">
+                    <img src="src/7.jpg">
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="ibm">
+                    <img src="src/9.jpg">
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="dept-event">
+                    <img src="src/11.jpg">
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="dept-event">
+                    <img src="src/12.jpg">
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="dept-event">
+                    <img src="src/13.jpg">
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-placeholder" data-slot="dept-event">
+                    <img src="src/1.jpg">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="eyebrow reveal">Get in Touch</div>
+    <h2 class="reveal">Let's build something<br>intelligent together.</h2>
+    <p class="reveal">Open to internships, research opportunities, and collaborations in AIDS, ML, and Software Engineering.</p>
+    <div class="contact-links reveal-stagger">
+      <a href="mailto:kavibarathimarimuthu@gmail.com" class="btn btn-primary">Email Me →</a>
+      <a href="https://www.linkedin.com/in/kavibarathi-marimuthu" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+      <a href="https://github.com/Kavibarathi-marimuthu" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; <span id="year"></span> Kavibarathi M. All rights reserved. Built with creativity, code & curiosity.</p>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  if (navLinks) {
+    burger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
+
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
